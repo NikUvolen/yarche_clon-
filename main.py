@@ -17,7 +17,7 @@ async def answer():
     while is_running:
         await client.send_message(BOT_ID, 'Все заявки')
         gathering_requests = True
-        await asyncio.sleep(40)
+        await asyncio.sleep(20)
 
         result = split_string(requests)
         result = find_suitable_vacancy(result)
@@ -28,7 +28,7 @@ async def answer():
 
         requests = ''
 
-        await asyncio.sleep(20)
+        await asyncio.sleep(10)
 
 
 async def all_orders():
