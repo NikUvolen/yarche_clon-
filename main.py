@@ -17,7 +17,7 @@ async def answer():
     while is_running:
         await client.send_message(BOT_ID, 'Все заявки')
         gathering_requests = True
-        await asyncio.sleep(20)
+        await asyncio.sleep(40)
 
         result = split_string(requests)
         result = find_suitable_vacancy(result)
@@ -28,7 +28,7 @@ async def answer():
 
         requests = ''
 
-        await asyncio.sleep(10)
+        await asyncio.sleep(15)
 
 
 async def all_orders():
@@ -58,9 +58,11 @@ async def start(event):
         user_id = event.message.peer_id.user_id
 
         is_running = True
+        loop = asyncio.get_event_loop()
+        loop.create_task(answer())
         await event.reply('Бот запущен')
         await asyncio.create_task(answer())
-        asyncio.get_running_loop().run_forever()
+        loop.run_forever()
     elif event.message.message.lower() == 'off':
         await event.reply('Бот выключен')
         is_running = False

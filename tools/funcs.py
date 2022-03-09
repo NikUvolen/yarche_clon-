@@ -20,7 +20,6 @@ def split_string(my_string) -> list:
 
 def find_suitable_vacancy(parse_string: list) -> int:
     for num, message in enumerate(parse_string[3:]):
-        pprint.pprint(message)
         employment = re.findall(r'./.', message)
         time = re.findall(r'\(.*?\)', message)
         if employment and time:
